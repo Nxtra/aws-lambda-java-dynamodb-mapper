@@ -20,11 +20,9 @@ Operations:
 * Gradle or gradle wraper
 * Java11
 
-*Build and deploy:*
-* build: `./gradlew clean build`
-* deploy first time: `sam deploy --guided`
-* deploy: `sam deploy`
-* build and deploy. After deploying for the first time you can build and deploy wit using the `build-and-deploy.sh` script.
+* edit the stack: `stackery edit`
+* deploy from local: `stackery deploy -e dev --strategy local --aws-profile default`
+* deploy for the first time: `stackery deploy`
 * delete the stack: `aws cloudformation delete-stack --stack-name {{name-of-your-stack}}`
 
 OUTPUTS: The stack will output the baseURL for the application on which you can execute requests.
@@ -53,8 +51,3 @@ If you are using IntelliJ you can use the Http Requests in the `http` folder to 
 You can get this from the outputs of the stack.
 * run all requests in `api.http` using the `test` environment
 
-
-## Stackery
-* edit the stack: `stackery edit`
-* deploy from local: `stackery deploy -e dev --strategy local --aws-profile default`
-* deploy for the first time: `stackery deploy`

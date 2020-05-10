@@ -10,6 +10,7 @@ import io.theclouddeveloper.memorycards.model.MemoryCard;
 import lombok.extern.slf4j.Slf4j;
 import software.amazon.awssdk.regions.Region;
 
+import javax.inject.Inject;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,13 +21,11 @@ public class MemoryCardDynamoDBService {
     private AmazonDynamoDB dynamoDbClient;
     private DynamoDBMapper dynamoDBMapper;
 
-    public MemoryCardDynamoDBService() {
-        dynamoDbClient = AmazonDynamoDBClientBuilder
-                .standard()
-                .withRegion(System.getenv("REGION") != null ? System.getenv("REGION") : "us-east-1")
-                .build();
-        dynamoDBMapper = new DynamoDBMapper(dynamoDbClient);
-    }
+    @Inject
+    public MemoryCardDynamoDBService(AmazonDynamoDB amazonDynamoDB, DynamoDBMapper dynamoDBMapper) {
+        this.dynamoDbClient = amazonDynamoDB;
+        this.dynamoDBMapper = dynamoDBMapper;
+}
 
     public void saveMemoryCard(MemoryCard memoryCard) {
         log.info("Saving memoryCard: {}", memoryCard);

@@ -32,6 +32,10 @@ dependencies {
     implementation 'com.amazonaws:aws-xray-recorder-sdk-aws-sdk-v2-instrumentor'
     implementation 'com.amazonaws:aws-xray-recorder-sdk-apache-http'
 
+    // Dagger
+    implementation 'com.google.dagger:dagger:2.27'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.27'
+
     implementation 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
