@@ -61,15 +61,14 @@ public class MemoryCardDynamoDBService {
 
         Map<String,String> expressionAttributesNames = new HashMap<>();
         expressionAttributesNames.put("#author","author");
-        expressionAttributesNames.put("#category","category");
+        expressionAttributesNames.put("#category_createdTimestamp","category_createdTimestamp");
 
         Map<String, AttributeValue> expressionAttributeValues = new HashMap<>();
-        expressionAttributeValues.put(":company",new AttributeValue().withS(author));
+        expressionAttributeValues.put(":author",new AttributeValue().withS(author));
         expressionAttributeValues.put(":category",new AttributeValue().withS(category));
 
         DynamoDBQueryExpression<MemoryCard> queryExpression = new DynamoDBQueryExpression<MemoryCard>()
-                .withIndexName("FactoryIndex")
-                .withKeyConditionExpression("#company = :company and #factory = :factory ")
+                .withKeyConditionExpression("#author = :author and begins_with(#category_createdTimestamp, :category)")
                 .withExpressionAttributeNames(expressionAttributesNames)
                 .withExpressionAttributeValues(expressionAttributeValues)
                 .withConsistentRead(false);

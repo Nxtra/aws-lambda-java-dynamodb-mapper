@@ -7,7 +7,7 @@ import lombok.ToString;
 
 @ToString
 @Builder
-@DynamoDBTable(tableName="ProductCatalog")
+@DynamoDBTable(tableName="java-mapper-dynamodb-client-dev-MemoryCardsTable-EEOQMEPYCRGZ")
 public class MemoryCard {
 
     private String author;
